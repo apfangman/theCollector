@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">The Collector</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_message">Hello User!</string>
+    <string name="collections_button">Your Collections</string>
+
+    <string name="collections_heading">Your Collections</string>
+
     <string name="action_settings">Settings</string>
+    <string name="title_activity_collections">CollectionsActivity</string>
 </resources>
