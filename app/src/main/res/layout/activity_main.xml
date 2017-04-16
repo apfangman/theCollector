@@ -20,14 +20,4 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="204dp" />
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:indeterminate="true"
-        android:layout_alignTop="@+id/collectionsButton"
-        android:layout_centerHorizontal="true"
-        android:visibility="gone" />
-
 </RelativeLayout>
