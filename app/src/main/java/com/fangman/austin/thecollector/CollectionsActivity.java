@@ -28,16 +28,19 @@ public class CollectionsActivity extends ActionBarActivity {
     ProgressBar progressBar;
 
     //TODO: Get user id. Should be passed to this activity after login.
-    static final String API_URL = "http://104.236.238.213/api/getCollections/<<UserId>>";
-
-    List<CollectionData> dataList;
+    static final String API_URL = "http://104.236.238.213/api/getCollections/1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collections);
 
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         new Retriever().execute();
+    }
+
+    private void setCollectionList(List<CollectionData> dataList)
+    {
         ListView collectionList = (ListView)findViewById(R.id.listView);
 
         ArrayAdapter<CollectionData> adapter = new ArrayAdapter<CollectionData>(
@@ -121,7 +124,8 @@ public class CollectionsActivity extends ActionBarActivity {
             }
             progressBar.setVisibility(View.GONE);
             Log.i("INFO", response);
-            dataList = new Gson().fromJson(response, new TypeToken<List<CollectionData>>(){}.getType());
+            List<CollectionData> dataList = new Gson().fromJson(response, new TypeToken<List<CollectionData>>(){}.getType());
+            setCollectionList(dataList);
         }
     }
 
