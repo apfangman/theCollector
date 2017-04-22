@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -53,14 +54,17 @@ public class CollectionsActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                goToItems();
+                CollectionData item = (CollectionData)parent.getItemAtPosition(position);
+                goToItems(item.getName(), item.collectionId);
             }
         });
     }
 
-    private void goToItems()
+    private void goToItems(String name, int collectionId)
     {
         Intent intent = new Intent(this, ItemsActivity.class);
+        intent.putExtra("collectionName", name);
+        intent.putExtra("collectionId", collectionId);
         startActivity(intent);
     }
 
