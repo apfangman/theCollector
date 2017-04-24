@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.fangman.austin.thecollector.LoginActivity"
+    android:background="@android:color/holo_blue_dark">
+
+    <TextView android:text="@string/title_activity_header" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginHeader"
+        style="@style/Base.TextAppearance.AppCompat.Display2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextEmail"
+        android:layout_below="@+id/loginHeader"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"
+        android:hint="eMail"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:focusable="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="false"
+        android:layout_alignWithParentIfMissing="false" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextPassword"
+        android:layout_marginTop="30dp"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:focusable="true"
+        android:layout_below="@+id/editTextEmail"
+        android:layout_alignRight="@+id/editTextEmail"
+        android:layout_alignEnd="@+id/editTextEmail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/signInButton"
+        android:layout_below="@+id/editTextPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
+
+</RelativeLayout>
