@@ -39,7 +39,7 @@ public class LoginActivity extends ActionBarActivity {
                 EditText email = (EditText)findViewById(R.id.editTextEmail);
                 EditText password = (EditText)findViewById(R.id.editTextPassword);
                 //API_URL = "http://104.236.238.213/api/checkLogin/" + email.getText().toString() + "/" + password.getText().toString();
-                API_URL = "http://104.236.238.213/api/checkLogin/austinfangman@yahoo.com/test";
+                API_URL = "http://104.236.238.213/api/checkLogin/" + email.getText().toString() + "/" + password.getText().toString();
                 new Retriever().execute();
             }
         });
