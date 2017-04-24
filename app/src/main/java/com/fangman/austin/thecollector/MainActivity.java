@@ -7,13 +7,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity
 {
+    static String userId = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        TextView textView = (TextView)findViewById(R.id.itemHeading);
+        textView.setText("Hello " + intent.getStringExtra("name"));
+        userId = intent.getStringExtra("id");
 
         Button button = (Button)findViewById(R.id.collectionsButton);
         button.setOnClickListener(new View.OnClickListener()
@@ -51,6 +59,7 @@ public class MainActivity extends ActionBarActivity
     private void goToCollections()
     {
         Intent intent = new Intent(this, CollectionsActivity.class);
+        intent.putExtra("userId", userId);
         startActivity(intent);
     }
 }

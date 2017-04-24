@@ -28,13 +28,15 @@ public class CollectionsActivity extends ActionBarActivity {
 
     ProgressBar progressBar;
 
-    //TODO: Get user id. Should be passed to this activity after login.
-    static final String API_URL = "http://104.236.238.213/api/getCollections/1";
+    static String API_URL = "http://104.236.238.213/api/getCollections/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collections);
+
+        Intent intent = getIntent();
+        API_URL = API_URL + intent.getStringExtra("userId");
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         new Retriever().execute();
