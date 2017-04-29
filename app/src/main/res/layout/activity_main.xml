@@ -4,7 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:background="@android:color/holo_blue_dark">
+    android:background="@drawable/background">
 
     <TextView android:text="@string/hello_message" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,15 +15,25 @@
         android:layout_alignParentStart="true"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:gravity="center" />
+        android:gravity="center"
+        android:id="@+id/mainHeading" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/collections_button"
         android:id="@+id/collectionsButton"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/mainHeading"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="204dp" />
+        android:layout_marginTop="88dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find a Collection"
+        android:id="@+id/findCollectionButton"
+        android:layout_below="@+id/collectionsButton"
+        android:layout_alignLeft="@+id/collectionsButton"
+        android:layout_alignStart="@+id/collectionsButton" />
 
 </RelativeLayout>
