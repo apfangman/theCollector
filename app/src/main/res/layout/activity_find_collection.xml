@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.fangman.austin.thecollector.FindCollectionActivity"
+    android:background="@drawable/background">
+
+    <TextView android:text="@string/find_heading" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Base.TextAppearance.AppCompat.Display1"
+        android:id="@+id/findHeading"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/findCollectionText"
+        android:hint="@string/search_text"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:focusable="true"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_below="@+id/findHeading"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/findCollectionsListView"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/findCollectionsProgress" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/findCollectionsProgress"
+        android:layout_below="@+id/findCollectionText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="79dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search_button"
+        android:id="@+id/searchButton"
+        android:layout_below="@+id/findCollectionText"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
