@@ -19,17 +19,27 @@ public class MainActivity extends ActionBarActivity
         setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();
-        TextView textView = (TextView)findViewById(R.id.itemHeading);
-        textView.setText("Hello " + intent.getStringExtra("name"));
         userId = intent.getStringExtra("id");
+        TextView textView = (TextView)findViewById(R.id.mainHeading);
+        textView.setText("Hello " + intent.getStringExtra("name") + "!");
 
-        Button button = (Button)findViewById(R.id.collectionsButton);
-        button.setOnClickListener(new View.OnClickListener()
+        Button lCollectionButton = (Button)findViewById(R.id.collectionsButton);
+        lCollectionButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 goToCollections();
+            }
+        });
+
+        Button lFindCollectionButton = (Button)findViewById(R.id.findCollectionButton);
+        lFindCollectionButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                goToFindCollection();
             }
         });
     }
@@ -59,6 +69,13 @@ public class MainActivity extends ActionBarActivity
     private void goToCollections()
     {
         Intent intent = new Intent(this, CollectionsActivity.class);
+        intent.putExtra("userId", userId);
+        startActivity(intent);
+    }
+
+    private void goToFindCollection()
+    {
+        Intent intent = new Intent(this, FindCollectionActivity.class);
         intent.putExtra("userId", userId);
         startActivity(intent);
     }

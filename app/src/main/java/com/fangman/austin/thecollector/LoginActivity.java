@@ -38,7 +38,7 @@ public class LoginActivity extends ActionBarActivity {
             {
                 EditText email = (EditText)findViewById(R.id.editTextEmail);
                 EditText password = (EditText)findViewById(R.id.editTextPassword);
-                //API_URL = "http://104.236.238.213/api/checkLogin/" + email.getText().toString() + "/" + password.getText().toString();
+
                 API_URL = "http://104.236.238.213/api/checkLogin/" + email.getText().toString() + "/" + password.getText().toString();
                 new Retriever().execute();
             }
@@ -68,7 +68,7 @@ public class LoginActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void goToMain(String name, Short id)
+    private void goToMain(String name, String id)
     {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("name", name);
@@ -121,11 +121,11 @@ public class LoginActivity extends ActionBarActivity {
     class UserData
     {
         private Boolean valid;
-        private Short id;
+        private String id;
         private String name;
 
         public Boolean isValid() { return valid; }
-        public Short getId() { return id; }
+        public String getId() { return id; }
         public String getName() { return name; }
 
         public String toString()
