@@ -57,7 +57,7 @@ public class CollectionsActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 CollectionData item = (CollectionData)parent.getItemAtPosition(position);
-                goToItems(item.getName(), item.collectionId);
+                goToItems(item.getName(), item.getCollectionId());
             }
         });
     }

@@ -52,7 +52,7 @@ public class FindCollectionActivity extends ActionBarActivity {
             @Override
             public void onClick(View v)
             {
-                API_URL = "http://104.236.238.213/api/getCollections/" + searchBar.getText();
+                API_URL = "http://104.236.238.213/api/findCollections/" + searchBar.getText();
                 new Retriever().execute();
             }
         });
@@ -60,7 +60,7 @@ public class FindCollectionActivity extends ActionBarActivity {
 
     private void setCollectionList(List<CollectionData> dataList)
     {
-        ListView collectionList = (ListView)findViewById(R.id.listView);
+        ListView collectionList = (ListView)findViewById(R.id.findCollectionsListView);
 
         ArrayAdapter<CollectionData> adapter = new ArrayAdapter<CollectionData>(
                 this,
@@ -73,7 +73,7 @@ public class FindCollectionActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 CollectionData item = (CollectionData)parent.getItemAtPosition(position);
-                goToItems(item.getName(), item.collectionId);
+                goToItems(item.getName(), item.getId());
             }
         });
     }
@@ -140,13 +140,16 @@ public class FindCollectionActivity extends ActionBarActivity {
         }
 
         protected void onPostExecute(String response) {
-            if(response == null) {
+            progressBar.setVisibility(View.GONE);
+            if(response == null)
+            {
                 response = "THERE WAS AN ERROR";
             }
-            progressBar.setVisibility(View.GONE);
-            Log.i("INFO", response);
-            List<CollectionData> dataList = new Gson().fromJson(response, new TypeToken<List<CollectionData>>(){}.getType());
-            setCollectionList(dataList);
+            if(response.trim() != "[]")
+            {
+                List<CollectionData> dataList = new Gson().fromJson(response, new TypeToken<List<CollectionData>>(){}.getType());
+                setCollectionList(dataList);
+            }
         }
     }
 
@@ -155,13 +158,10 @@ public class FindCollectionActivity extends ActionBarActivity {
         private Short id;
         private String name;
         private String picture;
-        private Short userId;
-        private Short collectionId;
 
         public String getName() { return name; }
         public String getPicture() { return picture; }
-        public Short getUserId() { return userId; }
-        public Short getCollectionId() { return collectionId; }
+        public Short getId() { return id; }
 
         public String toString()
         {
