@@ -39,7 +39,7 @@ public class ItemsActivity extends ActionBarActivity {
         progressBar = (ProgressBar) findViewById(R.id.itemsProgressBar);
         TextView textView = (TextView)findViewById(R.id.itemHeading);
         textView.setText(intent.getStringExtra("collectionName"));
-        API_URL = API_URL + intent.getIntExtra("collectionId", -1);
+        API_URL = API_URL + intent.getIntExtra("collectionId", -1) + "/" + intent.getStringExtra("userId");
         //new Retriever().execute();
     }
 

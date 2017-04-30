@@ -56,17 +56,20 @@ public class CollectionsActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
+                Intent intent = getIntent();
+
                 CollectionData item = (CollectionData)parent.getItemAtPosition(position);
-                goToItems(item.getName(), item.getCollectionId());
+                goToItems(item.getName(), item.getCollectionId(), intent.getStringExtra("userId"));
             }
         });
     }
 
-    private void goToItems(String name, int collectionId)
+    private void goToItems(String name, int collectionId, String userId)
     {
         Intent intent = new Intent(this, ItemsActivity.class);
         intent.putExtra("collectionName", name);
         intent.putExtra("collectionId", collectionId);
+        intent.putExtra("userId", userId);
         startActivity(intent);
     }
 
