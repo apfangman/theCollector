@@ -35,6 +35,10 @@
             android:name=".FindCollectionActivity"
             android:label="@string/title_activity_find_collection" >
         </activity>
+        <activity
+            android:name=".ItemsAfterSearchActivity"
+            android:label="@string/title_activity_items_after_search" >
+        </activity>
     </application>
 
 </manifest>

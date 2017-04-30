@@ -5,16 +5,9 @@ import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -28,67 +21,34 @@ import java.net.URL;
 import java.util.List;
 
 
-public class FindCollectionActivity extends ActionBarActivity {
+public class ItemsAfterSearchActivity extends ActionBarActivity {
 
-    static String userId = "";
-    static String API_URL = "";
     ProgressBar progressBar;
+
+    static String API_URL = "http://104.236.238.213/api/getItemsForCollection/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_collection);
+        setContentView(R.layout.activity_items_after_search);
 
         Intent intent = getIntent();
-        userId = intent.getStringExtra("id");
+        progressBar = (ProgressBar) findViewById(R.id.itemsProgressBar);
+        TextView textView = (TextView)findViewById(R.id.itemHeading);
+        textView.setText(intent.getStringExtra("collectionName"));
+        API_URL = API_URL + intent.getIntExtra("collectionId", -1);
 
-        progressBar = (ProgressBar) findViewById(R.id.findCollectionsProgress);
-
-        final EditText searchBar = (EditText)findViewById(R.id.findCollectionText);
-
-        Button lSearchButton = (Button)findViewById(R.id.searchButton);
-        lSearchButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                API_URL = "http://104.236.238.213/api/findCollections/" + searchBar.getText();
-                new Retriever().execute();
-            }
-        });
     }
 
-    private void setCollectionList(List<CollectionData> dataList)
+    private void setItemList(List<ItemData> dataList)
     {
-        ListView collectionList = (ListView)findViewById(R.id.findCollectionsListView);
 
-        ArrayAdapter<CollectionData> adapter = new ArrayAdapter<CollectionData>(
-                this,
-                android.R.layout.simple_list_item_1,
-                dataList);
-        collectionList.setAdapter(adapter);
-        collectionList.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                CollectionData item = (CollectionData)parent.getItemAtPosition(position);
-                goToItemsAfterSearch(item.getName(), item.getId());
-            }
-        });
     }
 
-    private void goToItemsAfterSearch(String name, int collectionId)
-    {
-        Intent intent = new Intent(this, ItemsAfterSearchActivity.class);
-        intent.putExtra("collectionName", name);
-        intent.putExtra("collectionId", collectionId);
-        startActivity(intent);
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_find_collection, menu);
+        getMenuInflater().inflate(R.menu.menu_items_after_search, menu);
         return true;
     }
 
@@ -140,28 +100,28 @@ public class FindCollectionActivity extends ActionBarActivity {
         }
 
         protected void onPostExecute(String response) {
-            progressBar.setVisibility(View.GONE);
-            if(response == null)
-            {
+            if(response == null) {
                 response = "THERE WAS AN ERROR";
             }
-            if(response.trim() != "[]")
-            {
-                List<CollectionData> dataList = new Gson().fromJson(response, new TypeToken<List<CollectionData>>(){}.getType());
-                setCollectionList(dataList);
-            }
+            progressBar.setVisibility(View.GONE);
+            Log.i("INFO", response);
+            List<ItemData> dataList = new Gson().fromJson(response, new TypeToken<List<ItemData>>(){}.getType());
+            setItemList(dataList);
         }
     }
 
-    class CollectionData
+    class ItemData
     {
         private Short id;
         private String name;
         private String picture;
+        private Short userId;
+        private Short collectionId;
 
         public String getName() { return name; }
         public String getPicture() { return picture; }
-        public Short getId() { return id; }
+        public Short getUserId() { return userId; }
+        public Short getCollectionId() { return collectionId; }
 
         public String toString()
         {
