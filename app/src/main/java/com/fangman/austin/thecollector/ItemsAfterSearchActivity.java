@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -25,18 +26,30 @@ public class ItemsAfterSearchActivity extends ActionBarActivity {
 
     ProgressBar progressBar;
 
-    static String API_URL = "http://104.236.238.213/api/getItemsForCollection/";
+    //static String API_URL = "http://104.236.238.213/api/getItemsForCollection/";
+    static String API_URL = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_after_search);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         progressBar = (ProgressBar) findViewById(R.id.itemsProgressBar);
         TextView textView = (TextView)findViewById(R.id.itemHeading);
         textView.setText(intent.getStringExtra("collectionName"));
-        API_URL = API_URL + intent.getIntExtra("collectionId", -1);
+
+        Button addCollectionButton = (Button)findViewById(R.id.addCollectionButton);
+        addCollectionButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                API_URL = "http://104.236.238.213/api/addCollection/" + intent.getStringExtra("collectionId") + "/" + intent.getStringExtra("userId");
+                new Retriever().execute();
+            }
+        });
+        API_URL = "http://104.236.238.213/api/getItemsForCollection/" + intent.getIntExtra("collectionId", -1);
 
     }
 
@@ -100,13 +113,21 @@ public class ItemsAfterSearchActivity extends ActionBarActivity {
         }
 
         protected void onPostExecute(String response) {
+            progressBar.setVisibility(View.GONE);
             if(response == null) {
                 response = "THERE WAS AN ERROR";
             }
-            progressBar.setVisibility(View.GONE);
-            Log.i("INFO", response);
-            List<ItemData> dataList = new Gson().fromJson(response, new TypeToken<List<ItemData>>(){}.getType());
-            setItemList(dataList);
+            if(response == "Collection Added!")
+            {
+                TextView collectionAdded = (TextView)findViewById(R.id.collectionAddedText);
+                collectionAdded.setVisibility(View.VISIBLE);
+            }
+            else
+            {
+                Log.i("INFO", response);
+                List<ItemData> dataList = new Gson().fromJson(response, new TypeToken<List<ItemData>>(){}.getType());
+                setItemList(dataList);
+            }
         }
     }
 

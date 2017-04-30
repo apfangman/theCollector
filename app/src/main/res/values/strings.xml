@@ -17,6 +17,10 @@
     <string name="find_heading">Find a Collection</string>
     <string name="search_text">Search for Collections...</string>
     <string name="search_button">Search</string>
+
+    <string name="add_collection_button">Add This Collection</string>
+    <string name="collection_added_text">Collection Added!</string>
+
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_find_collection">FindCollectionActivity</string>
     <string name="title_activity_items_after_search">ItemsAfterSearchActivity</string>

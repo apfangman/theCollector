@@ -73,16 +73,19 @@ public class FindCollectionActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 CollectionData item = (CollectionData)parent.getItemAtPosition(position);
-                goToItemsAfterSearch(item.getName(), item.getId());
+                Intent intent = getIntent();
+                userId = intent.getStringExtra("id");
+                goToItemsAfterSearch(item.getName(), item.getId(), userId);
             }
         });
     }
 
-    private void goToItemsAfterSearch(String name, int collectionId)
+    private void goToItemsAfterSearch(String name, int collectionId, String userId)
     {
         Intent intent = new Intent(this, ItemsAfterSearchActivity.class);
         intent.putExtra("collectionName", name);
         intent.putExtra("collectionId", collectionId);
+        intent.putExtra("userId", userId);
         startActivity(intent);
     }
     @Override
