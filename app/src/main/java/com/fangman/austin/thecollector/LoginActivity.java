@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -39,8 +40,14 @@ public class LoginActivity extends ActionBarActivity {
                 EditText email = (EditText)findViewById(R.id.editTextEmail);
                 EditText password = (EditText)findViewById(R.id.editTextPassword);
 
-                API_URL = "http://104.236.238.213/api/checkLogin/" + email.getText().toString() + "/" + password.getText().toString();
-                new Retriever().execute();
+                String emailText = email.getText().toString().trim();
+                String passwordText = password.getText().toString().trim();
+
+                if(!emailText.isEmpty() && !passwordText.isEmpty())
+                {
+                    API_URL = "http://104.236.238.213/api/checkLogin/" + emailText + "/" + passwordText;
+                    new Retriever().execute();
+                }
             }
         });
     }
@@ -110,10 +117,18 @@ public class LoginActivity extends ActionBarActivity {
             if(response == null) {
                 response = "THERE WAS AN ERROR";
             }
+
+            TextView signInError = (TextView)findViewById(R.id.loginErrorText);
+
             if(response != "")
             {
+                signInError.setVisibility(View.GONE);
                 UserData data = new Gson().fromJson(response, new TypeToken<UserData>(){}.getType());
                 goToMain(data.getName(), data.getId());
+            }
+            else
+            {
+                signInError.setVisibility(View.VISIBLE);
             }
         }
     }
