@@ -1,15 +1,22 @@
 package com.fangman.austin.thecollector;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -45,7 +52,10 @@ public class ItemsActivity extends ActionBarActivity {
 
     private void setItemList(List<ItemData> dataList)
     {
+        GridView itemList = (GridView)findViewById(R.id.itemGridView);
 
+        ItemAdapter adapter = new ItemAdapter(this, dataList);
+        itemList.setAdapter(adapter);
     }
 
     @Override
@@ -113,6 +123,79 @@ public class ItemsActivity extends ActionBarActivity {
         }
     }
 
+    class ItemAdapter extends ArrayAdapter<ItemData>
+    {
+        public ItemAdapter(Context context, List<ItemData> items)
+        {
+            super(context, 0, items);
+        }
+
+        @Override
+        public View getView(int position, View view, ViewGroup parent)
+        {
+            ItemData item = getItem(position);
+
+            if(view == null)
+            {
+                view = LayoutInflater.from(getContext()).inflate(R.layout.item_for_grid, parent, false);
+            }
+
+            ImageView itemImage = (ImageView)view.findViewById(R.id.itemImage);
+            TextView itemName = (TextView)view.findViewById(R.id.itemText);
+            Button itemButton1 = (Button)view.findViewById(R.id.itemButton1);
+            Button itemButton2 = (Button)view.findViewById(R.id.itemButton2);
+            Button itemButton3 = (Button)view.findViewById(R.id.itemButton3);
+
+            itemName.setText(item.getName());
+            String button1text = item.getButton1Text();
+            String button2text = item.getButton2Text();
+            String button3text = item.getButton3Text();
+
+            //If a button has no text, make it invisible
+            //If it is checked, set color to blue
+            if(button1text.isEmpty())
+            {
+                itemButton1.setVisibility(View.GONE);
+            }
+            else
+            {
+                if(item.getButton1Checked())
+                {
+                    itemButton1.setBackgroundColor(Color.CYAN);
+                }
+                itemButton1.setText(item.getButton1Text());
+            }
+
+            if(button2text.isEmpty())
+            {
+                itemButton2.setVisibility(View.GONE);
+            }
+            else
+            {
+                if(item.getButton2Checked())
+                {
+                    itemButton2.setBackgroundColor(Color.CYAN);
+                }
+                itemButton2.setText(item.getButton2Text());
+            }
+
+            if(button3text.isEmpty())
+            {
+                itemButton3.setVisibility(View.GONE);
+            }
+            else
+            {
+                if(item.getButton3Checked())
+                {
+                    itemButton3.setBackgroundColor(Color.CYAN);
+                }
+                itemButton3.setText(item.getButton3Text());
+            }
+
+            return view;
+        }
+    }
+
     class ItemData
     {
         private Short id;
@@ -120,11 +203,23 @@ public class ItemsActivity extends ActionBarActivity {
         private String picture;
         private Short userId;
         private Short collectionId;
+        private String buttonOne;
+        private String buttonTwo;
+        private String buttonThree;
+        private Boolean buttonOneChecked;
+        private Boolean buttonTwoChecked;
+        private Boolean buttonThreeChecked;
 
         public String getName() { return name; }
         public String getPicture() { return picture; }
         public Short getUserId() { return userId; }
         public Short getCollectionId() { return collectionId; }
+        public String getButton1Text() { return buttonOne; }
+        public String getButton2Text() { return buttonTwo; }
+        public String getButton3Text() { return buttonThree; }
+        public Boolean getButton1Checked() { return buttonOneChecked; }
+        public Boolean getButton2Checked() { return buttonTwoChecked; }
+        public Boolean getButton3Checked() { return buttonThreeChecked; }
 
         public String toString()
         {
