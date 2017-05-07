@@ -28,7 +28,7 @@ public class CollectionsActivity extends ActionBarActivity {
 
     ProgressBar progressBar;
 
-    static String API_URL = "http://104.236.238.213/api/getCollections/";
+    static String API_URL = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class CollectionsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_collections);
 
         Intent intent = getIntent();
-        API_URL = API_URL + intent.getStringExtra("userId");
+        API_URL = "http://104.236.238.213/api/getCollections/" + intent.getStringExtra("userId");
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         new Retriever().execute();

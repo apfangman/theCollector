@@ -59,7 +59,7 @@ public class ItemsAfterSearchActivity extends ActionBarActivity {
             }
         });
         API_URL = "http://104.236.238.213/api/getItemsForCollection/" + intent.getIntExtra("collectionId", -1);
-
+        new Retriever().execute();
     }
 
     private void setItemList(List<ItemData> dataList)
@@ -212,18 +212,18 @@ public class ItemsAfterSearchActivity extends ActionBarActivity {
         private String storeLink;
         private Short collectionId;
         private Short itemId;
-        private String button1Text;
-        private String button2Text;
-        private String button3Text;
+        private String buttonOne;
+        private String buttonTwo;
+        private String buttonThree;
 
         public String getName() { return name; }
         public String getPicture() { return picture; }
         public Short getItemId() { return itemId; }
         public Short getCollectionId() { return collectionId; }
         public String getStoreLink() { return storeLink; }
-        public String getButton1Text() { return button1Text; }
-        public String getButton2Text() { return button2Text; }
-        public String getButton3Text() { return button3Text; }
+        public String getButton1Text() { return buttonOne; }
+        public String getButton2Text() { return buttonTwo; }
+        public String getButton3Text() { return buttonThree; }
 
         public String toString()
         {
