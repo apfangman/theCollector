@@ -35,7 +35,7 @@ public class ItemsActivity extends ActionBarActivity {
 
     ProgressBar progressBar;
 
-    static String API_URL = "http://104.236.238.213/api/getItemsForCollectionForUser/";
+    static String API_URL = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,8 @@ public class ItemsActivity extends ActionBarActivity {
         progressBar = (ProgressBar) findViewById(R.id.itemsProgressBar);
         TextView textView = (TextView)findViewById(R.id.itemHeading);
         textView.setText(intent.getStringExtra("collectionName"));
-        API_URL = API_URL + intent.getIntExtra("collectionId", -1) + "/" + intent.getStringExtra("userId");
-        //new Retriever().execute();
+        API_URL = "http://104.236.238.213/api/getItemsForSingleUserCollection/" + intent.getIntExtra("collectionId", -1) + "/" + intent.getStringExtra("userId");
+        new Retriever().execute();
     }
 
     private void setItemList(List<ItemData> dataList)
