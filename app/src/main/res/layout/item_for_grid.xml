@@ -12,25 +12,40 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/itemText"/>
+        android:id="@+id/itemText"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="3dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:layout_width="73dp"
+            android:layout_height="40dp"
+            android:id="@+id/itemButton1"
+            android:background="@android:color/holo_orange_dark"
+            android:singleLine="false"
+            android:textSize="10sp"
+            android:layout_marginRight="2dp" />
+
+        <Button
+            android:layout_width="73dp"
+            android:layout_height="40dp"
+            android:id="@+id/itemButton2"
+            android:background="@android:color/holo_orange_dark"
+            android:layout_marginLeft="1dp"
+            android:textSize="10sp" />
+
+    </LinearLayout>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/itemButton1"
-        android:background="@android:color/holo_orange_dark"
-        android:singleLine="false" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/itemButton2"
-        android:background="@android:color/holo_orange_dark" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="73dp"
+        android:layout_height="40dp"
         android:id="@+id/itemButton3"
-        android:background="@android:color/holo_orange_dark" />
+        android:background="@android:color/holo_orange_dark"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="5dp"
+        android:textSize="10sp" />
 
 </LinearLayout>
