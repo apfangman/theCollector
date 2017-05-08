@@ -3,6 +3,7 @@ package com.fangman.austin.thecollector;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -142,9 +143,9 @@ public class ItemsActivity extends ActionBarActivity {
 
             ImageView itemImage = (ImageView)view.findViewById(R.id.itemImage);
             TextView itemName = (TextView)view.findViewById(R.id.itemText);
-            Button itemButton1 = (Button)view.findViewById(R.id.itemButton1);
-            Button itemButton2 = (Button)view.findViewById(R.id.itemButton2);
-            Button itemButton3 = (Button)view.findViewById(R.id.itemButton3);
+            final Button itemButton1 = (Button)view.findViewById(R.id.itemButton1);
+            final Button itemButton2 = (Button)view.findViewById(R.id.itemButton2);
+            final Button itemButton3 = (Button)view.findViewById(R.id.itemButton3);
 
             itemName.setText(item.getName());
             String button1text = item.getButton1Text();
@@ -159,11 +160,20 @@ public class ItemsActivity extends ActionBarActivity {
             }
             else
             {
+                itemButton1.setText(item.getButton1Text());
                 if(item.getButton1Checked())
                 {
-                    itemButton1.setBackgroundColor(Color.CYAN);
+                    itemButton1.setBackgroundColor(Color.WHITE);
+                    itemButton1.setText(itemButton1.getText() + " \u2713");
                 }
-                itemButton1.setText(item.getButton1Text());
+                itemButton1.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        switchColorAndText(itemButton1);
+                    }
+                });
             }
 
             if(button2text.isEmpty())
@@ -172,11 +182,20 @@ public class ItemsActivity extends ActionBarActivity {
             }
             else
             {
+                itemButton2.setText(item.getButton2Text());
                 if(item.getButton2Checked())
                 {
-                    itemButton2.setBackgroundColor(Color.CYAN);
+                    itemButton2.setBackgroundColor(Color.WHITE);
+                    itemButton2.setText(itemButton2.getText() + " \u2713");
                 }
-                itemButton2.setText(item.getButton2Text());
+                itemButton2.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        switchColorAndText(itemButton2);
+                    }
+                });
             }
 
             if(button3text.isEmpty())
@@ -185,14 +204,38 @@ public class ItemsActivity extends ActionBarActivity {
             }
             else
             {
+                itemButton3.setText(item.getButton3Text());
                 if(item.getButton3Checked())
                 {
-                    itemButton3.setBackgroundColor(Color.CYAN);
+                    itemButton3.setBackgroundColor(Color.WHITE);
+                    itemButton3.setText(itemButton3.getText() + " \u2713");
                 }
-                itemButton3.setText(item.getButton3Text());
+                itemButton3.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        switchColorAndText(itemButton3);
+                    }
+                });
             }
 
             return view;
+        }
+
+        private void switchColorAndText(Button itemButton)
+        {
+            ColorDrawable itemButtonColor = (ColorDrawable)itemButton.getBackground();
+            if(itemButtonColor.getColor() == Color.GRAY)
+            {
+                itemButton.setBackgroundColor(Color.WHITE);
+                itemButton.setText(itemButton.getText() + " \u2713");
+            }
+            else
+            {
+                itemButton.setBackgroundColor(Color.GRAY);
+                itemButton.setText(itemButton.getText().subSequence(0, itemButton.getText().length() - 2));
+            }
         }
     }
 
