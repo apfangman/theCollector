@@ -106,4 +106,15 @@
         android:layout_centerHorizontal="true"
         android:visibility="gone" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register_user_fields_error"
+        android:id="@+id/registerUserFieldsError"
+        android:layout_below="@+id/editTextRegisterReenterPassword"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@android:color/holo_red_light"
+        android:visibility="gone" />
+
 </RelativeLayout>

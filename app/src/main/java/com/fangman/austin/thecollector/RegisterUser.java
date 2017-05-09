@@ -46,20 +46,31 @@ public class RegisterUser extends ActionBarActivity {
                 EditText reenterPassword = (EditText)findViewById(R.id.editTextRegisterPassword);
 
                 TextView registerError = (TextView)findViewById(R.id.loginErrorText);
+                TextView fieldsError = (TextView)findViewById(R.id.registerUserFieldsError);
 
                 String nameText = name.getText().toString().trim();
                 String emailText = email.getText().toString().trim();
                 String passwordText = password.getText().toString().trim();
                 String reenterPasswordText = reenterPassword.getText().toString().trim();
 
-                if(!nameText.isEmpty() && !emailText.isEmpty() && !passwordText.isEmpty() && !reenterPasswordText.isEmpty() && reenterPasswordText == passwordText)
+                if(!nameText.isEmpty() && !emailText.isEmpty() && !passwordText.isEmpty() && !reenterPasswordText.isEmpty())
                 {
-
-                    API_URL = "http://104.236.238.213/api/registerUser/" + nameText + "/" + emailText + "/" + passwordText;
-                    new Retriever().execute();
+                    if(reenterPasswordText == passwordText)
+                    {
+                        registerError.setVisibility(View.GONE);
+                        fieldsError.setVisibility(View.GONE);
+                        API_URL = "http://104.236.238.213/api/registerUser/" + nameText + "/" + emailText + "/" + passwordText;
+                        new Retriever().execute();
+                    }
+                    else
+                    {
+                        registerError.setVisibility(View.GONE);
+                        fieldsError.setVisibility(View.VISIBLE);
+                    }
                 }
                 else
                 {
+                    fieldsError.setVisibility(View.GONE);
                     registerError.setVisibility(View.VISIBLE);
                 }
             }
