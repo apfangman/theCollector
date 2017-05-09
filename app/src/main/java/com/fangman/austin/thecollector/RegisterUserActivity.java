@@ -142,7 +142,12 @@ public class RegisterUserActivity extends ActionBarActivity {
         }
 
         protected void onPostExecute(String response) {
-            if(response.isEmpty()) {
+            if(response == null)
+            {
+                Log.i("INFO", "THERE WAS AN ERROR");
+            }
+            else if(response.isEmpty())
+            {
                 TextView takenError = (TextView)findViewById(R.id.registerUserTakenError);
                 takenError.setVisibility(View.VISIBLE);
             }

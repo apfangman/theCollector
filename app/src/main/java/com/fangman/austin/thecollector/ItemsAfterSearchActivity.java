@@ -58,7 +58,7 @@ public class ItemsAfterSearchActivity extends ActionBarActivity {
                 new Retriever().execute();
             }
         });
-        API_URL = "http://104.236.238.213/api/getItemsForCollection/" + intent.getIntExtra("collectionId", -1);
+        API_URL = "http://104.236.238.213/api/getItemsForCollection/" + intent.getStringExtra("collectionId");
         new Retriever().execute();
     }
 
@@ -129,7 +129,7 @@ public class ItemsAfterSearchActivity extends ActionBarActivity {
             if(response == null) {
                 response = "THERE WAS AN ERROR";
             }
-            if(response.equals("Collection Added!"))
+            else if(response.equals("Collection Added!\n"))
             {
                 TextView collectionAdded = (TextView)findViewById(R.id.collectionAddedText);
                 collectionAdded.setVisibility(View.VISIBLE);

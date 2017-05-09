@@ -74,13 +74,13 @@ public class FindCollectionActivity extends ActionBarActivity {
             {
                 CollectionData item = (CollectionData)parent.getItemAtPosition(position);
                 Intent intent = getIntent();
-                userId = intent.getStringExtra("id");
+                userId = intent.getStringExtra("userId");
                 goToItemsAfterSearch(item.getName(), item.getId(), userId);
             }
         });
     }
 
-    private void goToItemsAfterSearch(String name, int collectionId, String userId)
+    private void goToItemsAfterSearch(String name, String collectionId, String userId)
     {
         Intent intent = new Intent(this, ItemsAfterSearchActivity.class);
         intent.putExtra("collectionName", name);
@@ -158,13 +158,13 @@ public class FindCollectionActivity extends ActionBarActivity {
 
     class CollectionData
     {
-        private Short id;
+        private String id;
         private String name;
         private String picture;
 
         public String getName() { return name; }
         public String getPicture() { return picture; }
-        public Short getId() { return id; }
+        public String getId() { return id; }
 
         public String toString()
         {
