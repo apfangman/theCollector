@@ -114,13 +114,17 @@ public class ItemsActivity extends ActionBarActivity {
         }
 
         protected void onPostExecute(String response) {
-            if(response == null) {
+            if(response == null)
+            {
                 response = "THERE WAS AN ERROR";
             }
-            progressBar.setVisibility(View.GONE);
-            Log.i("INFO", response);
-            List<ItemData> dataList = new Gson().fromJson(response, new TypeToken<List<ItemData>>(){}.getType());
-            setItemList(dataList);
+            else
+            {
+                progressBar.setVisibility(View.GONE);
+                Log.i("INFO", response);
+                List<ItemData> dataList = new Gson().fromJson(response, new TypeToken<List<ItemData>>(){}.getType());
+                setItemList(dataList);
+            }
         }
     }
 
