@@ -39,6 +39,10 @@
             android:name=".ItemsAfterSearchActivity"
             android:label="@string/title_activity_items_after_search" >
         </activity>
+        <activity
+            android:name=".RegisterUser"
+            android:label="@string/title_activity_register_user" >
+        </activity>
     </application>
 
 </manifest>

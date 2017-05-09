@@ -68,4 +68,23 @@
         android:visibility="gone"
         android:text="@string/sign_in_error" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register_user_button"
+        android:id="@+id/registerUserButton"
+        android:layout_below="@+id/signInButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register_user_message"
+        android:id="@+id/textView2"
+        android:layout_alignBottom="@+id/registerUserButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="42dp"
+        android:textColor="@android:color/white" />
+
 </RelativeLayout>

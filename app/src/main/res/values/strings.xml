@@ -12,6 +12,16 @@
 
     <string name="title_activity_header">Sign In</string>
     <string name="sign_in_error">eMail or password is incorrect</string>
+    <string name="register_user_message">No account yet?</string>
+    <string name="register_user_button">Register User</string>
+
+    <string name="register_user_activity_header">Register User</string>
+    <string name="register_user_name">Name</string>
+    <string name="register_user_email">eMail</string>
+    <string name="register_user_password">Password</string>
+    <string name="register_user_reenter_password">Re-enter Password</string>
+    <string name="register_user_password_error">Passwords do not match!</string>
+    <string name="register_user_submit_button">Register</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="find_heading">Find a Collection</string>
@@ -24,4 +34,5 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_find_collection">FindCollectionActivity</string>
     <string name="title_activity_items_after_search">ItemsAfterSearchActivity</string>
+    <string name="title_activity_register_user">RegisterUser</string>
 </resources>

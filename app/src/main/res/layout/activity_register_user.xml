@@ -1,0 +1,109 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.fangman.austin.thecollector.RegisterUser"
+    android:background="@drawable/background">
+
+    <TextView android:text="@string/register_user_activity_header" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        style="@style/Base.TextAppearance.AppCompat.Display2"
+        android:textColor="@android:color/white"
+        android:id="@+id/registerUserTitle" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextRegisterName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"
+        android:hint="@string/register_user_name"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:focusable="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="false"
+        android:layout_alignWithParentIfMissing="false" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextRegisterEmail"
+        android:hint="@string/register_user_email"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:focusable="true"
+        android:layout_marginTop="25dp"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_below="@+id/editTextRegisterName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextRegisterPassword"
+        android:hint="@string/register_user_password"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:focusable="true"
+        android:layout_marginTop="45dp"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_below="@+id/editTextRegisterEmail"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextRegisterReenterPassword"
+        android:hint="@string/register_user_reenter_password"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:focusable="true"
+        android:layout_marginTop="10dp"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_below="@+id/editTextRegisterPassword"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register_user_password_error"
+        android:id="@+id/registerUserPasswordError"
+        android:layout_below="@+id/editTextRegisterReenterPassword"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/holo_red_light"
+        android:visibility="gone" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register_user_submit_button"
+        android:id="@+id/registerUserSubmitButton"
+        android:layout_below="@+id/editTextRegisterReenterPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/registerUserProgressBar"
+        android:layout_below="@+id/registerUserSubmitButton"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

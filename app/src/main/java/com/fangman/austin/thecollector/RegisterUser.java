@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -22,50 +23,53 @@ import java.net.URL;
 import java.util.List;
 
 
-public class LoginActivity extends ActionBarActivity {
+public class RegisterUser extends ActionBarActivity {
+
+    ProgressBar progressBar = (ProgressBar)findViewById(R.id.registerUserProgressBar);
 
     static String API_URL = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register_user);
 
-        Button loginButton = (Button)findViewById(R.id.signInButton);
-        loginButton.setOnClickListener(new View.OnClickListener()
+        Button submitButton = (Button)findViewById(R.id.registerUserSubmitButton);
+        submitButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                EditText email = (EditText)findViewById(R.id.editTextEmail);
-                EditText password = (EditText)findViewById(R.id.editTextPassword);
+                EditText name = (EditText)findViewById(R.id.editTextRegisterName);
+                EditText email = (EditText)findViewById(R.id.editTextRegisterEmail);
+                EditText password = (EditText)findViewById(R.id.editTextRegisterPassword);
+                EditText reenterPassword = (EditText)findViewById(R.id.editTextRegisterPassword);
 
+                TextView registerError = (TextView)findViewById(R.id.loginErrorText);
+
+                String nameText = name.getText().toString().trim();
                 String emailText = email.getText().toString().trim();
                 String passwordText = password.getText().toString().trim();
+                String reenterPasswordText = reenterPassword.getText().toString().trim();
 
-                if(!emailText.isEmpty() && !passwordText.isEmpty())
+                if(!nameText.isEmpty() && !emailText.isEmpty() && !passwordText.isEmpty() && !reenterPasswordText.isEmpty() && reenterPasswordText == passwordText)
                 {
-                    API_URL = "http://104.236.238.213/api/checkLogin/" + emailText + "/" + passwordText;
+
+                    API_URL = "http://104.236.238.213/api/registerUser/" + nameText + "/" + emailText + "/" + passwordText;
                     new Retriever().execute();
                 }
-            }
-        });
-        Button registerButton = (Button)findViewById(R.id.registerUserButton);
-        registerButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                goToRegister();
+                else
+                {
+                    registerError.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_login, menu);
+        getMenuInflater().inflate(R.menu.menu_register_user, menu);
         return true;
     }
 
@@ -92,17 +96,13 @@ public class LoginActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    private void goToRegister()
-    {
-        Intent intent = new Intent(this, RegisterUser.class);
-        startActivity(intent);
-    }
-
     class Retriever extends AsyncTask<Void, Void, String> {
 
         private Exception exception;
 
-        protected void onPreExecute() {}
+        protected void onPreExecute() {
+            progressBar.setVisibility(View.VISIBLE);
+        }
 
         protected String doInBackground(Void... urls) {
             try {
@@ -132,31 +132,20 @@ public class LoginActivity extends ActionBarActivity {
             if(response == null) {
                 response = "THERE WAS AN ERROR";
             }
-
-            TextView signInError = (TextView)findViewById(R.id.loginErrorText);
-
-            if(response != "")
-            {
-                signInError.setVisibility(View.GONE);
-                UserData data = new Gson().fromJson(response, new TypeToken<UserData>(){}.getType());
-                goToMain(data.getName(), data.getId());
-            }
-            else
-            {
-                signInError.setVisibility(View.VISIBLE);
-            }
+            progressBar.setVisibility(View.GONE);
+            UserData data = new Gson().fromJson(response, new TypeToken<UserData>(){}.getType());
+            goToMain(data.getName(), data.getId());
+            Log.i("INFO", response);
         }
     }
 
     class UserData
     {
-        private Boolean valid;
         private String id;
         private String name;
 
-        public Boolean isValid() { return valid; }
-        public String getId() { return id; }
         public String getName() { return name; }
+        public String getId() { return id; }
 
         public String toString()
         {
