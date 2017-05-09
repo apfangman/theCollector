@@ -211,14 +211,12 @@ public class ItemsAfterSearchActivity extends ActionBarActivity {
         private String picture;
         private String storeLink;
         private Short collectionId;
-        private Short itemId;
         private String buttonOne;
         private String buttonTwo;
         private String buttonThree;
 
         public String getName() { return name; }
         public String getPicture() { return picture; }
-        public Short getItemId() { return itemId; }
         public Short getCollectionId() { return collectionId; }
         public String getStoreLink() { return storeLink; }
         public String getButton1Text() { return buttonOne; }
