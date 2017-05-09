@@ -42,6 +42,16 @@ public class MainActivity extends ActionBarActivity
                 goToFindCollection();
             }
         });
+
+        Button lCreateCollectionButton = (Button)findViewById(R.id.createCollectionButton);
+        lCreateCollectionButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                goToCreateCollection();
+            }
+        });
     }
 
     @Override
@@ -76,6 +86,13 @@ public class MainActivity extends ActionBarActivity
     private void goToFindCollection()
     {
         Intent intent = new Intent(this, FindCollectionActivity.class);
+        intent.putExtra("userId", userId);
+        startActivity(intent);
+    }
+
+    private void goToCreateCollection()
+    {
+        Intent intent = new Intent(this, CreateCollectionActivity.class);
         intent.putExtra("userId", userId);
         startActivity(intent);
     }

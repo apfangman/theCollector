@@ -43,6 +43,10 @@
             android:name=".RegisterUserActivity"
             android:label="@string/title_activity_register_user" >
         </activity>
+        <activity
+            android:name=".CreateCollectionActivity"
+            android:label="@string/title_activity_create_collection" >
+        </activity>
     </application>
 
 </manifest>
