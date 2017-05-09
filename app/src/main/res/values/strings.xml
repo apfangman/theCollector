@@ -22,6 +22,7 @@
     <string name="register_user_reenter_password">Re-enter Password</string>
     <string name="register_user_password_error">Passwords do not match!</string>
     <string name="register_user_fields_error">All fields are required!</string>
+    <string name="register_user_taken_error">eMail already in use!</string>
     <string name="register_user_submit_button">Register</string>
 
     <string name="hello_world">Hello world!</string>

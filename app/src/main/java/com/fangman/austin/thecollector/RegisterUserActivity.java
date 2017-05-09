@@ -23,9 +23,9 @@ import java.net.URL;
 import java.util.List;
 
 
-public class RegisterUser extends ActionBarActivity {
+public class RegisterUserActivity extends ActionBarActivity {
 
-    ProgressBar progressBar = (ProgressBar)findViewById(R.id.registerUserProgressBar);
+    ProgressBar progressBar;
 
     static String API_URL = "";
 
@@ -43,9 +43,9 @@ public class RegisterUser extends ActionBarActivity {
                 EditText name = (EditText)findViewById(R.id.editTextRegisterName);
                 EditText email = (EditText)findViewById(R.id.editTextRegisterEmail);
                 EditText password = (EditText)findViewById(R.id.editTextRegisterPassword);
-                EditText reenterPassword = (EditText)findViewById(R.id.editTextRegisterPassword);
+                EditText reenterPassword = (EditText)findViewById(R.id.editTextRegisterReenterPassword);
 
-                TextView registerError = (TextView)findViewById(R.id.loginErrorText);
+                TextView registerError = (TextView)findViewById(R.id.registerUserPasswordError);
                 TextView fieldsError = (TextView)findViewById(R.id.registerUserFieldsError);
 
                 String nameText = name.getText().toString().trim();
@@ -55,23 +55,25 @@ public class RegisterUser extends ActionBarActivity {
 
                 if(!nameText.isEmpty() && !emailText.isEmpty() && !passwordText.isEmpty() && !reenterPasswordText.isEmpty())
                 {
-                    if(reenterPasswordText == passwordText)
+                    if(reenterPasswordText.equals(passwordText))
                     {
                         registerError.setVisibility(View.GONE);
                         fieldsError.setVisibility(View.GONE);
                         API_URL = "http://104.236.238.213/api/registerUser/" + nameText + "/" + emailText + "/" + passwordText;
+                        progressBar = (ProgressBar)findViewById(R.id.registerUserProgressBar);
+                        progressBar.setVisibility(View.VISIBLE);
                         new Retriever().execute();
                     }
                     else
                     {
-                        registerError.setVisibility(View.GONE);
-                        fieldsError.setVisibility(View.VISIBLE);
+                        fieldsError.setVisibility(View.GONE);
+                        registerError.setVisibility(View.VISIBLE);
                     }
                 }
                 else
                 {
-                    fieldsError.setVisibility(View.GONE);
-                    registerError.setVisibility(View.VISIBLE);
+                    fieldsError.setVisibility(View.VISIBLE);
+                    registerError.setVisibility(View.GONE);
                 }
             }
         });
@@ -140,13 +142,17 @@ public class RegisterUser extends ActionBarActivity {
         }
 
         protected void onPostExecute(String response) {
-            if(response == null) {
-                response = "THERE WAS AN ERROR";
+            if(response.isEmpty()) {
+                TextView takenError = (TextView)findViewById(R.id.registerUserTakenError);
+                takenError.setVisibility(View.VISIBLE);
             }
-            progressBar.setVisibility(View.GONE);
-            UserData data = new Gson().fromJson(response, new TypeToken<UserData>(){}.getType());
-            goToMain(data.getName(), data.getId());
-            Log.i("INFO", response);
+            else
+            {
+                progressBar.setVisibility(View.GONE);
+                UserData data = new Gson().fromJson(response, new TypeToken<UserData>(){}.getType());
+                goToMain(data.getName(), data.getId());
+                Log.i("INFO", response);
+            }
         }
     }
 
