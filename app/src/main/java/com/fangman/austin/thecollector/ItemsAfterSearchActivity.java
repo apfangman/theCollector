@@ -129,7 +129,7 @@ public class ItemsAfterSearchActivity extends ActionBarActivity {
             if(response == null) {
                 response = "THERE WAS AN ERROR";
             }
-            if(response == "Collection Added!")
+            if(response.equals("Collection Added!"))
             {
                 TextView collectionAdded = (TextView)findViewById(R.id.collectionAddedText);
                 collectionAdded.setVisibility(View.VISIBLE);
