@@ -42,14 +42,12 @@ public class AddItemsActivity extends ActionBarActivity {
         userName = intent.getStringExtra("userName");
         collectionId = intent.getStringExtra("collectionId");
 
+        progressBar = (ProgressBar) findViewById(R.id.addItemProgress);
+
         final boolean userSpecific = intent.getBooleanExtra("userSpecific", true);
 
         TextView textView = (TextView)findViewById(R.id.addItemsHeader);
         textView.setText("Add Items to " + intent.getStringExtra("collectionName"));
-
-        EditText itemName = (EditText)findViewById(R.id.editTextItemName);
-
-        final String itemNameText = itemName.getText().toString().trim();
 
         final TextView emptyNameError = (TextView)findViewById(R.id.emptyNameError);
 
@@ -59,6 +57,9 @@ public class AddItemsActivity extends ActionBarActivity {
             @Override
             public void onClick(View v)
             {
+                EditText itemName = (EditText)findViewById(R.id.editTextItemName);
+                String itemNameText = itemName.getText().toString().trim();
+
                 if(!itemNameText.isEmpty())
                 {
                     emptyNameError.setVisibility(View.GONE);

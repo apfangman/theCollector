@@ -27,6 +27,8 @@
     <string name="register_user_taken_error">eMail already in use!</string>
     <string name="register_user_submit_button">Register</string>
 
+    <string name="add_user_item_button">Add Item</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="find_heading">Find a Collection</string>
     <string name="search_text">Search for Collections...</string>

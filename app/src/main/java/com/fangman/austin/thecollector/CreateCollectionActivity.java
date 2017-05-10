@@ -152,7 +152,7 @@ public class CreateCollectionActivity extends ActionBarActivity {
             {
                 progressBar.setVisibility(View.GONE);
                 CollectionData data = new Gson().fromJson(response, new TypeToken<CollectionData>(){}.getType());
-                goToAddItems(data.getName(), data.getId(), data.getUserId());
+                goToAddItems(data.getName(), data.getId(), userId);
                 Log.i("INFO", response);
             }
         }
