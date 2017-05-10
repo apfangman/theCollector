@@ -29,6 +29,8 @@ public class CreateCollectionActivity extends ActionBarActivity {
 
     static String userId = "";
 
+    static String userName = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,7 @@ public class CreateCollectionActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
         userId = intent.getStringExtra("userId");
+        userName = intent.getStringExtra("userName");
 
         progressBar = (ProgressBar) findViewById(R.id.createCollectionProgressBar);
 
@@ -179,6 +182,7 @@ public class CreateCollectionActivity extends ActionBarActivity {
         intent.putExtra("collectionName", name);
         intent.putExtra("collectionId", collectionId);
         intent.putExtra("userId", userId);
+        intent.putExtra("userSpecific", false);
         startActivity(intent);
     }
 }

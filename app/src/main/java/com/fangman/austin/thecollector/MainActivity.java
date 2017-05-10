@@ -12,6 +12,7 @@ import android.widget.TextView;
 public class MainActivity extends ActionBarActivity
 {
     static String userId = "";
+    static String userName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +21,9 @@ public class MainActivity extends ActionBarActivity
 
         Intent intent = getIntent();
         userId = intent.getStringExtra("id");
+        userName = intent.getStringExtra("name");
         TextView textView = (TextView)findViewById(R.id.mainHeading);
-        textView.setText("Hello " + intent.getStringExtra("name") + "!");
+        textView.setText("Hello " + userName + "!");
 
         Button lCollectionButton = (Button)findViewById(R.id.collectionsButton);
         lCollectionButton.setOnClickListener(new View.OnClickListener()
@@ -94,6 +96,7 @@ public class MainActivity extends ActionBarActivity
     {
         Intent intent = new Intent(this, CreateCollectionActivity.class);
         intent.putExtra("userId", userId);
+        intent.putExtra("userName", userName);
         startActivity(intent);
     }
 }

@@ -18,7 +18,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextCollectionName"
+        android:id="@+id/editTextItemName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="95dp"
         android:hint="Name"
@@ -37,7 +37,27 @@
         android:text="@string/add_items_button"
         android:id="@+id/addItemsButton"
         android:layout_marginTop="53dp"
-        android:layout_below="@+id/editTextCollectionName"
+        android:layout_below="@+id/editTextItemName"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_name_error"
+        android:id="@+id/emptyNameError"
+        android:layout_below="@+id/addItemsButton"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/holo_red_light"
+        android:visibility="gone" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_items_home_button"
+        android:id="@+id/addItemsHomeButton"
+        android:layout_marginTop="90dp"
+        android:layout_below="@+id/addItemsButton"
+        android:layout_alignRight="@+id/addItemsButton"
+        android:layout_alignEnd="@+id/addItemsButton" />
 
 </RelativeLayout>
