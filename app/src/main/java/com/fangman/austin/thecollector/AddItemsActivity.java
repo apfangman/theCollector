@@ -64,12 +64,12 @@ public class AddItemsActivity extends ActionBarActivity {
                     emptyNameError.setVisibility(View.GONE);
                     if(userSpecific)
                     {
-                        API_URL = "http://104.236.238.213/api/addItemToCollectionForUser/" + itemNameText + "/" + collectionId;
+                        API_URL = "http://104.236.238.213/api/addItemToCollectionForUser/" + itemNameText + "/" + collectionId + "/" + userId;
                         new Retriever().execute();
                     }
                     else
                     {
-                        API_URL = "http://104.236.238.213/api/addItemToCollection/" + itemNameText + "/" + collectionId;
+                        API_URL = "http://104.236.238.213/api/addItemToCollection/" + itemNameText + "/" + collectionId + "/" + userId;
                         new Retriever().execute();
                     }
                 }
