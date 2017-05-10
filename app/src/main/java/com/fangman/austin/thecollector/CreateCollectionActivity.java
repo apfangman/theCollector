@@ -35,7 +35,9 @@ public class CreateCollectionActivity extends ActionBarActivity {
         setContentView(R.layout.activity_create_collection);
 
         Intent intent = getIntent();
-        userId = intent.getStringExtra("id");
+        userId = intent.getStringExtra("userId");
+
+        progressBar = (ProgressBar) findViewById(R.id.createCollectionProgressBar);
 
         Button lSubmitCollectionButton = (Button)findViewById(R.id.submitCollectionButton);
         lSubmitCollectionButton.setOnClickListener(new View.OnClickListener()
@@ -173,7 +175,7 @@ public class CreateCollectionActivity extends ActionBarActivity {
 
     private void goToAddItems(String name, String collectionId, String userId)
     {
-        Intent intent = new Intent(this, ItemsActivity.class);
+        Intent intent = new Intent(this, AddItemsActivity.class);
         intent.putExtra("collectionName", name);
         intent.putExtra("collectionId", collectionId);
         intent.putExtra("userId", userId);

@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.fangman.austin.thecollector.AddItemsActivity"
+    android:background="@drawable/background">
+
+    <TextView android:text="@string/add_items_heading" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        style="@style/Base.TextAppearance.AppCompat.Display1"
+        android:id="@+id/addItemsHeader"
+        android:textColor="@android:color/white" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextCollectionName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"
+        android:hint="Name"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:focusable="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="false"
+        android:layout_alignWithParentIfMissing="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_items_button"
+        android:id="@+id/addItemsButton"
+        android:layout_marginTop="53dp"
+        android:layout_below="@+id/editTextCollectionName"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

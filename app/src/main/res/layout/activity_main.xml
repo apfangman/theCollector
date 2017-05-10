@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:text="@string/create_collection_button"
         android:id="@+id/createCollectionButton"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/findCollectionButton"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

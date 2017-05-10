@@ -105,4 +105,13 @@
         android:textColor="@android:color/holo_red_light"
         android:visibility="gone" />
 
+    <ProgressBar
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createCollectionProgressBar"
+        android:layout_below="@+id/editTextButton3"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
 </RelativeLayout>

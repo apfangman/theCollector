@@ -37,6 +37,9 @@
     <string name="name_and_button_error">Name and Button One must be filled out!</string>
     <string name="submit_collection_button">Create Collection</string>
 
+    <string name="add_items_heading">Add Items to </string>
+    <string name="add_items_button">Add Item</string>
+
     <string name="add_collection_button">Add This Collection</string>
     <string name="collection_added_text">Collection Added!</string>
 
@@ -45,4 +48,5 @@
     <string name="title_activity_items_after_search">ItemsAfterSearchActivity</string>
     <string name="title_activity_register_user">RegisterUser</string>
     <string name="title_activity_create_collection">CreateCollectionActivity</string>
+    <string name="title_activity_add_items">AddItemsActivity</string>
 </resources>

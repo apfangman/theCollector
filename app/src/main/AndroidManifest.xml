@@ -47,6 +47,10 @@
             android:name=".CreateCollectionActivity"
             android:label="@string/title_activity_create_collection" >
         </activity>
+        <activity
+            android:name=".AddItemsActivity"
+            android:label="@string/title_activity_add_items" >
+        </activity>
     </application>
 
 </manifest>
