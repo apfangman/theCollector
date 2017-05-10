@@ -165,8 +165,8 @@ public class AddItemsActivity extends ActionBarActivity {
     private void goToMain(String name, String id)
     {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("name", name);
-        intent.putExtra("id", id);
+        intent.putExtra("userN]ame", userName);
+        intent.putExtra("userId", userId);
         startActivity(intent);
     }
 }

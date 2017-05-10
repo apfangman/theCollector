@@ -111,6 +111,17 @@ public class CreateCollectionActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void goToAddItems(String name, String collectionId, String userId)
+    {
+        Intent intent = new Intent(this, AddItemsActivity.class);
+        intent.putExtra("collectionName", name);
+        intent.putExtra("collectionId", collectionId);
+        intent.putExtra("userId", userId);
+        intent.putExtra("userName", userName);
+        intent.putExtra("userSpecific", false);
+        startActivity(intent);
+    }
+
     class Retriever extends AsyncTask<Void, Void, String> {
 
         private Exception exception;
@@ -174,15 +185,5 @@ public class CreateCollectionActivity extends ActionBarActivity {
         {
             return name;
         }
-    }
-
-    private void goToAddItems(String name, String collectionId, String userId)
-    {
-        Intent intent = new Intent(this, AddItemsActivity.class);
-        intent.putExtra("collectionName", name);
-        intent.putExtra("collectionId", collectionId);
-        intent.putExtra("userId", userId);
-        intent.putExtra("userSpecific", false);
-        startActivity(intent);
     }
 }

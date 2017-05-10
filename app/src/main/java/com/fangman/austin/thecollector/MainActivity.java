@@ -20,8 +20,8 @@ public class MainActivity extends ActionBarActivity
         setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();
-        userId = intent.getStringExtra("id");
-        userName = intent.getStringExtra("name");
+        userId = intent.getStringExtra("userId");
+        userName = intent.getStringExtra("userName");
         TextView textView = (TextView)findViewById(R.id.mainHeading);
         textView.setText("Hello " + userName + "!");
 
