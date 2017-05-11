@@ -31,6 +31,7 @@ import java.util.List;
 public class FindCollectionActivity extends ActionBarActivity {
 
     static String userId = "";
+    static String userName = "";
     static String API_URL = "";
     ProgressBar progressBar;
 
@@ -40,8 +41,8 @@ public class FindCollectionActivity extends ActionBarActivity {
         setContentView(R.layout.activity_find_collection);
 
         Intent intent = getIntent();
-        userId = intent.getStringExtra("id");
-
+        userId = intent.getStringExtra("userId");
+        userName = intent.getStringExtra("userName");
         progressBar = (ProgressBar) findViewById(R.id.findCollectionsProgress);
 
         final EditText searchBar = (EditText)findViewById(R.id.findCollectionText);
@@ -75,19 +76,29 @@ public class FindCollectionActivity extends ActionBarActivity {
                 CollectionData item = (CollectionData)parent.getItemAtPosition(position);
                 Intent intent = getIntent();
                 userId = intent.getStringExtra("userId");
-                goToItemsAfterSearch(item.getName(), item.getId(), userId);
+                goToItemsAfterSearch(item.getName(), item.getId());
             }
         });
     }
 
-    private void goToItemsAfterSearch(String name, String collectionId, String userId)
+    private void goToItemsAfterSearch(String name, String collectionId)
     {
         Intent intent = new Intent(this, ItemsAfterSearchActivity.class);
         intent.putExtra("collectionName", name);
         intent.putExtra("collectionId", collectionId);
         intent.putExtra("userId", userId);
+        intent.putExtra("userName", userName);
         startActivity(intent);
     }
+
+    private void goToMain()
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("userId", userId);
+        intent.putExtra("userName", userName);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -104,6 +115,7 @@ public class FindCollectionActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            goToMain();
             return true;
         }
 

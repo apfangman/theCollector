@@ -30,6 +30,10 @@ public class CollectionsActivity extends ActionBarActivity {
 
     static String API_URL = "";
 
+    static String userId = "";
+
+    static String userName = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +41,9 @@ public class CollectionsActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
         API_URL = "http://104.236.238.213/api/getCollections/" + intent.getStringExtra("userId");
+
+        userId = intent.getStringExtra("userId");
+        userName = intent.getStringExtra("userName");
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         new Retriever().execute();
@@ -59,17 +66,26 @@ public class CollectionsActivity extends ActionBarActivity {
                 Intent intent = getIntent();
 
                 CollectionData item = (CollectionData)parent.getItemAtPosition(position);
-                goToItems(item.getName(), item.getCollectionId(), intent.getStringExtra("userId"));
+                goToItems(item.getName(), item.getCollectionId());
             }
         });
     }
 
-    private void goToItems(String name, String collectionId, String userId)
+    private void goToItems(String name, String collectionId)
     {
         Intent intent = new Intent(this, ItemsActivity.class);
         intent.putExtra("collectionName", name);
         intent.putExtra("collectionId", collectionId);
         intent.putExtra("userId", userId);
+        intent.putExtra("userName", userName);
+        startActivity(intent);
+    }
+
+    private void goToMain()
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("userId", userId);
+        intent.putExtra("userName", userName);
         startActivity(intent);
     }
 
@@ -89,6 +105,7 @@ public class CollectionsActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            goToMain();
             return true;
         }
 

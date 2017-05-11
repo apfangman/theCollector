@@ -37,6 +37,8 @@ public class ItemsAfterSearchActivity extends ActionBarActivity {
 
     //static String API_URL = "http://104.236.238.213/api/getItemsForCollection/";
     static String API_URL = "";
+    static String userId = "";
+    static String userName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class ItemsAfterSearchActivity extends ActionBarActivity {
 
         final Intent intent = getIntent();
         progressBar = (ProgressBar) findViewById(R.id.itemsProgressBar);
+        userId = intent.getStringExtra("userId");
+        userName = intent.getStringExtra("userName");
         TextView textView = (TextView)findViewById(R.id.itemHeading);
         textView.setText(intent.getStringExtra("collectionName"));
 
@@ -86,10 +90,19 @@ public class ItemsAfterSearchActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            goToMain();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void goToMain()
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("userId", userId);
+        intent.putExtra("userName", userName);
+        startActivity(intent);
     }
 
     class Retriever extends AsyncTask<Void, Void, String> {

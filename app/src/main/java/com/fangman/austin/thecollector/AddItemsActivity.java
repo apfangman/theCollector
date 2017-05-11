@@ -110,6 +110,7 @@ public class AddItemsActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            goToMain();
             return true;
         }
 
@@ -178,6 +179,14 @@ public class AddItemsActivity extends ActionBarActivity {
         Intent intent = new Intent(this, CollectionsActivity.class);
         intent.putExtra("userName", userName);
         intent.putExtra("userId", userId);
+        startActivity(intent);
+    }
+
+    private void goToMain()
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("userId", userId);
+        intent.putExtra("userName", userName);
         startActivity(intent);
     }
 }

@@ -8,7 +8,7 @@
 
     <string name="collections_heading">Your Collections</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Go to Main</string>
     <string name="title_activity_collections">CollectionsActivity</string>
     <string name="title_activity_items">ItemsActivity</string>
 
@@ -41,6 +41,7 @@
 
     <string name="add_items_heading">Add Items to </string>
     <string name="add_items_button">Add Item</string>
+    <string name="delete_items_button">Delete</string>
     <string name="add_item_message">Item added!</string>
     <string name="add_items_home_button">Go to Collections</string>
     <string name="empty_name_error">Item name cannot be empty!</string>

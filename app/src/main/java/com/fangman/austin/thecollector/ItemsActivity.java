@@ -95,6 +95,7 @@ public class ItemsActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            goToMain();
             return true;
         }
 
@@ -109,6 +110,14 @@ public class ItemsActivity extends ActionBarActivity {
         intent.putExtra("userId", userId);
         intent.putExtra("userName", userName);
         intent.putExtra("userSpecific", true);
+        startActivity(intent);
+    }
+
+    private void goToMain()
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("userId", userId);
+        intent.putExtra("userName", userName);
         startActivity(intent);
     }
 

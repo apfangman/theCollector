@@ -90,6 +90,7 @@ public class MainActivity extends ActionBarActivity
     {
         Intent intent = new Intent(this, FindCollectionActivity.class);
         intent.putExtra("userId", userId);
+        intent.putExtra("userName", userName);
         startActivity(intent);
     }
 
