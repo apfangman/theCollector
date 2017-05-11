@@ -59,7 +59,7 @@ public class AddItemsActivity extends ActionBarActivity {
             public void onClick(View v)
             {
                 EditText itemName = (EditText)findViewById(R.id.editTextItemName);
-                String itemNameText = itemName.getText().toString().trim();
+                String itemNameText = itemName.getText().toString().trim().replace(" ", "%20");
 
                 if(!itemNameText.isEmpty())
                 {

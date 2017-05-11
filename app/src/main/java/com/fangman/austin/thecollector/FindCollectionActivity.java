@@ -53,7 +53,7 @@ public class FindCollectionActivity extends ActionBarActivity {
             @Override
             public void onClick(View v)
             {
-                API_URL = "http://104.236.238.213/api/findCollections/" + searchBar.getText();
+                API_URL = "http://104.236.238.213/api/findCollections/" + searchBar.getText().toString().trim().replace(" ", "%20");
                 new Retriever().execute();
             }
         });

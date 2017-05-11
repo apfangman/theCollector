@@ -55,10 +55,10 @@ public class CreateCollectionActivity extends ActionBarActivity {
 
                 TextView nameAndButtonError = (TextView)findViewById(R.id.nameAndButtonError);
 
-                String collectionNameText = collectionName.getText().toString().trim();
-                String buttonOneText = buttonOne.getText().toString().trim();
-                String buttonTwoText = buttonTwo.getText().toString().trim();
-                String buttonThreeText = buttonThree.getText().toString().trim();
+                String collectionNameText = collectionName.getText().toString().trim().replace(" ", "%20");
+                String buttonOneText = buttonOne.getText().toString().trim().replace(" ", "%20");
+                String buttonTwoText = buttonTwo.getText().toString().trim().replace(" ", "%20");
+                String buttonThreeText = buttonThree.getText().toString().trim().replace(" ", "%20");
 
                 if(!buttonThreeText.isEmpty() && buttonTwoText.isEmpty())
                 {

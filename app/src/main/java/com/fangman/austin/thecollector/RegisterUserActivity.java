@@ -48,10 +48,10 @@ public class RegisterUserActivity extends ActionBarActivity {
                 TextView registerError = (TextView)findViewById(R.id.registerUserPasswordError);
                 TextView fieldsError = (TextView)findViewById(R.id.registerUserFieldsError);
 
-                String nameText = name.getText().toString().trim();
-                String emailText = email.getText().toString().trim();
-                String passwordText = password.getText().toString().trim();
-                String reenterPasswordText = reenterPassword.getText().toString().trim();
+                String nameText = name.getText().toString().trim().replace(" ", "%20");
+                String emailText = email.getText().toString().trim().replace(" ", "%20");
+                String passwordText = password.getText().toString().trim().replace(" ", "%20");
+                String reenterPasswordText = reenterPassword.getText().toString().trim().replace(" ", "%20");
 
                 if(!nameText.isEmpty() && !emailText.isEmpty() && !passwordText.isEmpty() && !reenterPasswordText.isEmpty())
                 {

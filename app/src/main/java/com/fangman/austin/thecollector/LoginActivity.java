@@ -39,8 +39,8 @@ public class LoginActivity extends ActionBarActivity {
                 EditText email = (EditText)findViewById(R.id.editTextEmail);
                 EditText password = (EditText)findViewById(R.id.editTextPassword);
 
-                String emailText = email.getText().toString().trim();
-                String passwordText = password.getText().toString().trim();
+                String emailText = email.getText().toString().trim().replace(" ", "%20");
+                String passwordText = password.getText().toString().trim().replace(" ", "%20");
 
                 if(!emailText.isEmpty() && !passwordText.isEmpty())
                 {
