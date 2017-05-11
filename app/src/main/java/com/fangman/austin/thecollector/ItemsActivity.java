@@ -126,6 +126,11 @@ public class ItemsActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    private void goToStore(String itemName)
+    {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.ebay.com/sch/i.html?_nkw=" + itemName.replace(" ", "%20")));
+        startActivity(intent);
+    }
 
     //Modified from http://www.androidauthority.com/use-remote-web-api-within-android-app-617869/
     class Retriever extends AsyncTask<Void, Void, String> {
@@ -337,6 +342,15 @@ public class ItemsActivity extends ActionBarActivity {
                     itemImage.setVisibility(View.GONE);
                     itemName.setVisibility(View.GONE);*/
                     itemLayout.setVisibility(View.GONE);
+                }
+            });
+
+            itemButton5.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    goToStore(item.getName());
                 }
             });
             return view;
