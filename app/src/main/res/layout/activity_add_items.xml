@@ -78,4 +78,23 @@
         android:textColor="@android:color/white"
         android:visibility="gone" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_items_image_button"
+        android:id="@+id/addImageButton"
+        android:layout_below="@+id/editTextItemName"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_items_image_message"
+        android:id="@+id/addImageMessage"
+        android:layout_alignTop="@+id/addImageButton"
+        android:layout_toRightOf="@+id/addImageButton"
+        android:layout_toEndOf="@+id/addImageButton"
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
+
 </RelativeLayout>

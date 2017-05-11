@@ -41,6 +41,8 @@
 
     <string name="add_items_heading">Add Items to </string>
     <string name="add_items_button">Add Item</string>
+    <string name="add_items_image_button">Select Image...</string>
+    <string name="add_items_image_message">Coming Soon!</string>
     <string name="delete_items_button">Delete</string>
     <string name="add_item_message">Item added!</string>
     <string name="add_items_home_button">Go to Collections</string>

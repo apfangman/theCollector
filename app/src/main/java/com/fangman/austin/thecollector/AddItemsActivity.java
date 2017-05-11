@@ -52,6 +52,22 @@ public class AddItemsActivity extends ActionBarActivity {
 
         final TextView emptyNameError = (TextView)findViewById(R.id.emptyNameError);
 
+        final TextView addImageMessage = (TextView)findViewById(R.id.addImageMessage);
+
+        Button lAddImageButton = (Button)findViewById(R.id.addImageButton);
+        lAddImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addImageMessage.setVisibility(View.VISIBLE);
+                new Handler().postDelayed(new Runnable()
+                {
+                    public void run()
+                    {
+                        addImageMessage.setVisibility(View.GONE);
+                    }
+                }, 3000);
+            }
+        });
         Button lAddItemsButton = (Button)findViewById(R.id.addItemsButton);
         lAddItemsButton.setOnClickListener(new View.OnClickListener()
         {
