@@ -80,6 +80,13 @@ public class RegisterUserActivity extends ActionBarActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_register_user, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -87,7 +94,8 @@ public class RegisterUserActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.go_to_login) {
+            goToLogin();
             return true;
         }
 
@@ -97,8 +105,14 @@ public class RegisterUserActivity extends ActionBarActivity {
     private void goToMain(String name, String id)
     {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("name", name);
-        intent.putExtra("id", id);
+        intent.putExtra("userName", name);
+        intent.putExtra("userId", id);
+        startActivity(intent);
+    }
+
+    private void goToLogin()
+    {
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 

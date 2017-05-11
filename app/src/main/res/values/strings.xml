@@ -9,8 +9,8 @@
     <string name="collections_heading">Your Collections</string>
 
     <string name="action_settings">Go to Main</string>
-    <string name="go_to_login">Go to Login</string>
     <string name="title_activity_collections">The Collector</string>
+    <string name="go_to_login">Go to Login</string>
     <string name="title_activity_items">The Collector</string>
 
     <string name="title_activity_header">Sign In</string>
