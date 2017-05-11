@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.os.Handler;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -87,7 +88,7 @@ public class AddItemsActivity extends ActionBarActivity {
             @Override
             public void onClick(View v)
             {
-                goToMain(userName, userId);
+                goToCollections();
             }
         });
     }
@@ -157,15 +158,25 @@ public class AddItemsActivity extends ActionBarActivity {
                 progressBar.setVisibility(View.GONE);
                 EditText itemName = (EditText)findViewById(R.id.editTextItemName);
                 itemName.setText("");
+                final TextView addItemMessage = (TextView)findViewById(R.id.addItemMessage);
+                addItemMessage.setVisibility(View.VISIBLE);
+
+                new Handler().postDelayed(new Runnable()
+                {
+                    public void run()
+                    {
+                        addItemMessage.setVisibility(View.GONE);
+                    }
+                }, 3000);
                 Log.i("INFO", response);
             }
         }
     }
 
-    private void goToMain(String name, String id)
+    private void goToCollections()
     {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("userN]ame", userName);
+        Intent intent = new Intent(this, CollectionsActivity.class);
+        intent.putExtra("userName", userName);
         intent.putExtra("userId", userId);
         startActivity(intent);
     }

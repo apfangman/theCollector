@@ -38,6 +38,11 @@ public class ItemsActivity extends ActionBarActivity {
 
     static String API_URL = "";
 
+    static String userId = "";
+    static String userName = "";
+    static String collectionId = "";
+    static String collectionName = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,10 +50,25 @@ public class ItemsActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
         progressBar = (ProgressBar) findViewById(R.id.itemsProgressBar);
+        collectionId = intent.getStringExtra("collectionId");
+        userId = intent.getStringExtra("userId");
+        userName = intent.getStringExtra("userName");
+        collectionName = intent.getStringExtra("collectionName");
+
         TextView textView = (TextView)findViewById(R.id.itemHeading);
-        textView.setText(intent.getStringExtra("collectionName"));
-        API_URL = "http://104.236.238.213/api/getItemsForSingleUserCollection/" + intent.getIntExtra("collectionId", -1) + "/" + intent.getStringExtra("userId");
+        textView.setText(collectionName);
+        API_URL = "http://104.236.238.213/api/getItemsForSingleUserCollection/" + collectionId + "/" + intent.getStringExtra("userId");
         new Retriever().execute();
+
+        Button addUserItemButton = (Button)findViewById(R.id.addUserItemButton);
+        addUserItemButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                goToAddItems();
+            }
+        });
     }
 
     private void setItemList(List<ItemData> dataList)
@@ -79,6 +99,17 @@ public class ItemsActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void goToAddItems()
+    {
+        Intent intent = new Intent(this, AddItemsActivity.class);
+        intent.putExtra("collectionName", collectionName);
+        intent.putExtra("collectionId", collectionId);
+        intent.putExtra("userId", userId);
+        intent.putExtra("userName", userName);
+        intent.putExtra("userSpecific", true);
+        startActivity(intent);
     }
 
     class Retriever extends AsyncTask<Void, Void, String> {
