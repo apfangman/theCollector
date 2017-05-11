@@ -64,7 +64,7 @@ public class CollectionsActivity extends ActionBarActivity {
         });
     }
 
-    private void goToItems(String name, int collectionId, String userId)
+    private void goToItems(String name, String collectionId, String userId)
     {
         Intent intent = new Intent(this, ItemsActivity.class);
         intent.putExtra("collectionName", name);
@@ -140,16 +140,16 @@ public class CollectionsActivity extends ActionBarActivity {
 
     class CollectionData
     {
-        private Short id;
+        private String id;
         private String name;
         private String picture;
-        private Short userId;
-        private Short collectionId;
+        private String userId;
+        private String collectionId;
 
         public String getName() { return name; }
         public String getPicture() { return picture; }
-        public Short getUserId() { return userId; }
-        public Short getCollectionId() { return collectionId; }
+        public String getUserId() { return userId; }
+        public String getCollectionId() { return collectionId; }
 
         public String toString()
         {
