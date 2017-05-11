@@ -149,6 +149,10 @@ public class ItemsActivity extends ActionBarActivity {
             {
                 response = "THERE WAS AN ERROR";
             }
+            if(response.equals("Item Updated!\n"))
+            {
+                return;
+            }
             else
             {
                 progressBar.setVisibility(View.GONE);
@@ -169,7 +173,7 @@ public class ItemsActivity extends ActionBarActivity {
         @Override
         public View getView(int position, View view, ViewGroup parent)
         {
-            ItemData item = getItem(position);
+            final ItemData item = getItem(position);
 
             if(view == null)
             {
@@ -207,6 +211,8 @@ public class ItemsActivity extends ActionBarActivity {
                     public void onClick(View v)
                     {
                         switchColorAndText(itemButton1);
+                        API_URL = "http://104.236.238.213/api/updateItem/" + item.getId() + "/" + userId + "/" + "1";
+                        new Retriever().execute();
                     }
                 });
             }
@@ -229,6 +235,8 @@ public class ItemsActivity extends ActionBarActivity {
                     public void onClick(View v)
                     {
                         switchColorAndText(itemButton2);
+                        API_URL = "http://104.236.238.213/api/updateItem/" + item.getId() + "/" + userId + "/" + "2";
+                        new Retriever().execute();
                     }
                 });
             }
@@ -251,6 +259,8 @@ public class ItemsActivity extends ActionBarActivity {
                     public void onClick(View v)
                     {
                         switchColorAndText(itemButton3);
+                        API_URL = "http://104.236.238.213/api/updateItem/" + item.getId() + "/" + userId + "/" + "3";
+                        new Retriever().execute();
                     }
                 });
             }
@@ -276,7 +286,7 @@ public class ItemsActivity extends ActionBarActivity {
 
     class ItemData
     {
-        private Short id;
+        private String id;
         private String name;
         private String picture;
         private Short userId;
@@ -288,6 +298,7 @@ public class ItemsActivity extends ActionBarActivity {
         private Boolean buttonTwoChecked;
         private Boolean buttonThreeChecked;
 
+        public String getId() { return id; }
         public String getName() { return name; }
         public String getPicture() { return picture; }
         public Short getUserId() { return userId; }
