@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/itemLayout">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -52,5 +53,14 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="5dp"
         android:textSize="10sp" />
+
+    <Button
+        android:layout_width="73dp"
+        android:layout_height="40dp"
+        android:id="@+id/itemButton4"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="5dp"
+        android:textSize="10sp"
+        android:text="@string/delete_items_button" />
 
 </LinearLayout>

@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -158,7 +159,7 @@ public class ItemsActivity extends ActionBarActivity {
             {
                 response = "THERE WAS AN ERROR";
             }
-            if(response.equals("Item Updated!\n"))
+            if(response.equals("Item Updated!\n") || response.equals("Item Deleted!\n"))
             {
                 return;
             }
@@ -189,11 +190,13 @@ public class ItemsActivity extends ActionBarActivity {
                 view = LayoutInflater.from(getContext()).inflate(R.layout.item_for_grid, parent, false);
             }
 
-            ImageView itemImage = (ImageView)view.findViewById(R.id.itemImage);
-            TextView itemName = (TextView)view.findViewById(R.id.itemText);
+            final LinearLayout itemLayout = (LinearLayout)view.findViewById(R.id.itemLayout);
+            final ImageView itemImage = (ImageView)view.findViewById(R.id.itemImage);
+            final TextView itemName = (TextView)view.findViewById(R.id.itemText);
             final Button itemButton1 = (Button)view.findViewById(R.id.itemButton1);
             final Button itemButton2 = (Button)view.findViewById(R.id.itemButton2);
             final Button itemButton3 = (Button)view.findViewById(R.id.itemButton3);
+            final Button itemButton4 = (Button)view.findViewById(R.id.itemButton4);
 
             itemName.setText(item.getName());
             String button1text = item.getButton1Text();
@@ -274,6 +277,21 @@ public class ItemsActivity extends ActionBarActivity {
                 });
             }
 
+            itemButton4.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    API_URL = "http://104.236.238.213/api/deleteItemForCollectionForUser/" + item.getId() + "/" + userId;
+                    new Retriever().execute();
+                    /*itemButton1.setVisibility(View.GONE);
+                    itemButton2.setVisibility(View.GONE);
+                    itemButton3.setVisibility(View.GONE);
+                    itemImage.setVisibility(View.GONE);
+                    itemName.setVisibility(View.GONE);*/
+                    itemLayout.setVisibility(View.GONE);
+                }
+            });
             return view;
         }
 
