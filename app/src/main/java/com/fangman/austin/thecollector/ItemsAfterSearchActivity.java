@@ -2,6 +2,8 @@ package com.fangman.austin.thecollector;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
@@ -25,6 +27,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -105,6 +108,40 @@ public class ItemsAfterSearchActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    //This class came from http://stackoverflow.com/questions/5776851/load-image-from-url,
+    //Kyle Clegg and King of Masses
+    class ImageDownloader extends AsyncTask<String, Void, Bitmap>
+    {
+        ImageView image;
+
+        public ImageDownloader(ImageView image)
+        {
+            this.image = image;
+        }
+
+        protected Bitmap doInBackground(String... urls)
+        {
+            String url = urls[0];
+            Bitmap bitmap = null;
+            try
+            {
+                InputStream is = new java.net.URL(url).openStream();
+                bitmap = BitmapFactory.decodeStream(is);
+            }
+            catch (Exception e)
+            {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
+
+        protected void onPostExecute(Bitmap result)
+        {
+            image.setImageBitmap(result);
+        }
+    }
+
     class Retriever extends AsyncTask<Void, Void, String> {
 
         private Exception exception;
@@ -183,6 +220,12 @@ public class ItemsAfterSearchActivity extends ActionBarActivity {
             String button1text = item.getButton1Text();
             String button2text = item.getButton2Text();
             String button3text = item.getButton3Text();
+
+            if(!item.getPicture().equals(""))
+            {
+                new ImageDownloader(itemImage)
+                        .execute(item.getPicture());
+            }
 
             //If a button has no text, make it invisible
             //If it is checked, set color to blue
