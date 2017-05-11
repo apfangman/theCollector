@@ -202,7 +202,7 @@ public class ItemsActivity extends ActionBarActivity {
                 itemButton1.setText(item.getButton1Text());
                 if(item.getButton1Checked())
                 {
-                    itemButton1.setBackgroundColor(Color.WHITE);
+                    itemButton1.setBackgroundColor(Color.GREEN);
                     itemButton1.setText(itemButton1.getText() + " \u2713");
                 }
                 itemButton1.setOnClickListener(new View.OnClickListener()
@@ -226,7 +226,7 @@ public class ItemsActivity extends ActionBarActivity {
                 itemButton2.setText(item.getButton2Text());
                 if(item.getButton2Checked())
                 {
-                    itemButton2.setBackgroundColor(Color.WHITE);
+                    itemButton2.setBackgroundColor(Color.GREEN);
                     itemButton2.setText(itemButton2.getText() + " \u2713");
                 }
                 itemButton2.setOnClickListener(new View.OnClickListener()
@@ -250,7 +250,7 @@ public class ItemsActivity extends ActionBarActivity {
                 itemButton3.setText(item.getButton3Text());
                 if(item.getButton3Checked())
                 {
-                    itemButton3.setBackgroundColor(Color.WHITE);
+                    itemButton3.setBackgroundColor(Color.GREEN);
                     itemButton3.setText(itemButton3.getText() + " \u2713");
                 }
                 itemButton3.setOnClickListener(new View.OnClickListener()
@@ -273,7 +273,7 @@ public class ItemsActivity extends ActionBarActivity {
             ColorDrawable itemButtonColor = (ColorDrawable)itemButton.getBackground();
             if(itemButtonColor.getColor() == Color.GRAY)
             {
-                itemButton.setBackgroundColor(Color.WHITE);
+                itemButton.setBackgroundColor(Color.GREEN);
                 itemButton.setText(itemButton.getText() + " \u2713");
             }
             else
